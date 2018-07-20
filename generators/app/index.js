@@ -93,9 +93,10 @@ module.exports = class extends Generator {
     // Create styleguide structure.
     this.composeWith(require.resolve('../styleguide'));
     
-    // Create scripts and stylesheets.
+    // Create scripts, stylesheets, and assets.
     this.composeWith(require.resolve('../js'));
     this.composeWith(require.resolve('../scss'));
+    this.composeWith(require.resolve('../assets'));
     
     // Create gruntfile.
     this.composeWith(require.resolve('../grunt'));
