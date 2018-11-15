@@ -102,7 +102,7 @@ module.exports = class extends Generator {
     this.composeWith(require.resolve('../grunt'));
     
     // Repackage the `package.json` file.
-    this.fs.writeJSON(this.destinationPath('package.json'), this.props);
+    this.fs.extendJSON(this.destinationPath('package.json'), this.props);
     
   }
   
