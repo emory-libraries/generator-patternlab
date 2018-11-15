@@ -52,6 +52,10 @@ module.exports = class extends Generator {
       this.templatePath('_secret.example.json'),
       this.destinationPath('secret.example.json')
     );
+    this.fs.copy(
+      this.templatePath('_README.md'),
+      this.destinationPath('README.md')
+    );
   
   }
   
@@ -90,13 +94,9 @@ module.exports = class extends Generator {
     // Create pattern lab structure.
     this.composeWith(require.resolve('../patternlab'));
     
-    // Create styleguide structure.
-    this.composeWith(require.resolve('../styleguide'));
-    
-    // Create scripts, stylesheets, and assets.
+    // Create scripts and stylesheets.
     this.composeWith(require.resolve('../js'));
     this.composeWith(require.resolve('../scss'));
-    this.composeWith(require.resolve('../assets'));
     
     // Create gruntfile.
     this.composeWith(require.resolve('../grunt'));
@@ -116,9 +116,6 @@ module.exports = class extends Generator {
   
   // Done.
   end() {
-    
-    // Automatically initialize Grunt so that the user doesn't have to.
-    this.spawnCommand('grunt', ['init']);
     
     // Alert the user that the generator is done.
     this.log();
